@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Op135网页导航</title>
 	<link rel="stylesheet" href="css/index.css">
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 </head>
 <body>
 	<div class="page clearfix">
@@ -29,5 +30,26 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		if($(".row").width()>=1200){
+			$(".row").css("background-size",$(".row").width()+"px");
+		}else{
+			$(".row").css("background-size","1200px");
+		}
+		$(window).resize(function(){
+			var rowWidth = $(".row").width();
+			if(rowWidth>=1200){
+				$(".row").css("background-size",rowWidth+"px");
+			}else{
+				$(".row").css("background-size","1200px");
+			}
+			var leftBar=$(".left-bar").width();
+			if(leftBar<=150){
+				$(".left-bar").css("width","150px");
+				rowWidth=$(".page").width()-$(".left-bar").width()-$(".center-bar").width();
+				$(".row").css("width",rowWidth+"px");
+			}
+		});
+	</script>
 </body>
 </html>
